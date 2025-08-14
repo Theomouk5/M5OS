@@ -1,14 +1,25 @@
 [BITS 16]
 [ORG 0x8000]
 
+KERNEL_LOCATION equ 0x10000
+
 CODE_SEG equ GDT_code - GDT_start
 DATA_SEG equ GDT_data - GDT_start
 
-cli
+mov ah, 0x2
+mov al, 0x1
+mov ch, 0
+mov cl, 0x3
+mov dh, 0
+mov dl, [0x800]
+mov bx, KERNEL_LOCATION >> 4
+int 13h
+jb read_error
 
 in al, 0x92
 or al, 0b00000010
 out 0x92, al
+cli
 
 lgdt [GDT_descriptor]
 mov eax, cr0
@@ -16,7 +27,10 @@ or eax, 1
 mov cr0, eax
 jmp CODE_SEG:start_protected_mode
 
-jmp $
+read_error:
+    mov si, disk_error
+    call error
+    jmp $
 
 %include "bootloader/print.asm"
 
@@ -53,7 +67,8 @@ start_protected_mode:
     mov fs, ax
     mov gs, ax
 
-    mov byte[0xB8000], 'N'
-    mov byte[0xB8001], 0x0B
+    jmp KERNEL_LOCATION >> 4
 
-    jmp $
+jmp $
+
+disk_error: db "Cannot read disk : Kernel", 13, 10, 0
