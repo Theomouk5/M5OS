@@ -67,6 +67,9 @@ start_protected_mode:
     mov fs, ax
     mov gs, ax
 
+    mov esp, 0x9FC00
+    mov ebp, esp
+    
     jmp KERNEL_LOCATION >> 4
 
 jmp $

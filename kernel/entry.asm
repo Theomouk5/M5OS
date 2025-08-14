@@ -1,9 +1,9 @@
 [BITS 32]
 
-extern main
+extern k_main
 
 section .text
 
 _start:
-    call main
+    call k_main
     jmp $
