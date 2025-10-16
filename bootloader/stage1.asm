@@ -9,7 +9,7 @@ mov sp, 0x4000
 mov bp, 0x4000
 
 mov ah, 0
-mov al, 0x2
+mov al, 0x3
 int 10h
 
 mov ah, 0x2
@@ -22,7 +22,7 @@ mov bx, 0x8000
 int 13h
 jb read_error
 
-jmp 0x0000:0x8000
+jmp 0x8000
 
 read_error:
     mov si, disk_error

@@ -21,11 +21,11 @@ typedef enum {
     RED,
     PINK,
     YELLOW,
-    WHITE
+    WHITE,
 } TermColor;
 
-void setColor(TermColor color);
+void setColor(TermColor c);
 void printChar(char c);
-void printString(char* s);
+void printString(char *s);
 
 #endif

@@ -1,18 +1,20 @@
 [BITS 16]
 [ORG 0x8000]
 
-KERNEL_LOCATION equ 0x10000
+KERNEL_LOCATION equ 0x1000
 
 CODE_SEG equ GDT_code - GDT_start
 DATA_SEG equ GDT_data - GDT_start
 
+mov ax, KERNEL_LOCATION
+mov es, ax
+mov bx, 0x0000
 mov ah, 0x2
 mov al, 0x1
 mov ch, 0
 mov cl, 0x3
 mov dh, 0
 mov dl, [0x800]
-mov bx, KERNEL_LOCATION >> 4
 int 13h
 jb read_error
 
@@ -69,8 +71,8 @@ start_protected_mode:
 
     mov esp, 0x9FC00
     mov ebp, esp
-    
-    jmp KERNEL_LOCATION >> 4
+ 
+    jmp KERNEL_LOCATION << 4
 
 jmp $
 
