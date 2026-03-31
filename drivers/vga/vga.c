@@ -93,5 +93,4 @@ void vgaPutNumber(int8_t n)
 
 void vgaPutInt(int n)
 {
-    
 }

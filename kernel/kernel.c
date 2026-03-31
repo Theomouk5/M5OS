@@ -1,9 +1,10 @@
 #include "../drivers/vga/vga.h"
+#include "../libc/string.h"
 
 void kernel_main()
 {
-    vgaPutNumber(6);
-    vgaPutNumber(7);
-    vgaPutChar('\n');
-    vgaPutNumber(-4);
+    int test = 5;
+    char buffer[16];
+    int_to_string(test, buffer);
+    vgaPutString(buffer);
 }
