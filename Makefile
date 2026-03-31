@@ -21,7 +21,7 @@ OBJ   := $(BUILD)/obj
 ISO   := $(BUILD)/iso
 
 # --- Sources -----------------------------------
-C_SOURCES   := $(shell find kernel -name "*.c")
+C_SOURCES   := $(shell find kernel drivers -name "*.c")
 ASM_SOURCES := $(shell find boot -name "*.asm")
 
 # --- Objets ------------------------------------
