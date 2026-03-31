@@ -21,7 +21,13 @@ void int_to_string(int n, char* str)
 
     *ptr = '\0';
 
-    for(i = 0, j = ptr - str - 1; i < j; i++, j--)
+    if(n < 0)
+    {
+        i = 1;
+        str[0] = '-';
+    }
+
+    for(j = ptr - str - 1; i < j; i++, j--)
     {
         char tmp = str[i];
         str[i] = str[j];

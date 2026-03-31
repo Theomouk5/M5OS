@@ -22,7 +22,6 @@ void vgaSetPosition(uint8_t row, uint8_t col);
 void vgaScrollDown();
 void vgaPutChar(char chr);
 void vgaPutString(char* str);
-void vgaPutNumber(int8_t n);
 void vgaPutInt(int n);
 
 #endif

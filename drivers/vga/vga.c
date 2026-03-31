@@ -1,4 +1,5 @@
 #include "vga.h"
+#include "../../libc/string.h"
 
 #include <stdint.h>
 
@@ -75,22 +76,13 @@ void vgaPutString(char* str)
     }
 }
 
-void vgaPutNumber(int8_t n)
-{
-    if(n > 9 || n < -9)
-    {
-        return;
-    }
- 
-    if(n < 0)
-    {
-        vgaPutChar('-');
-        n *= -1;
-    }
-
-    vgaPutChar(48 + (uint8_t)n);
-}
-
 void vgaPutInt(int n)
 {
+    char number[32];
+    int_to_string(n, number);
+    char* it = number;
+    while(*it != 0)
+    {
+        vgaPutChar(*it++);
+    }
 }
