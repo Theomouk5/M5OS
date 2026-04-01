@@ -2,6 +2,7 @@
 
 void kernel_main()
 {
-    int number = -450;
+    int number = -26509;
     vgaPutInt(number);
+    vgaPutChar('\n');
 }

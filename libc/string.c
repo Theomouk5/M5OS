@@ -1,4 +1,5 @@
 #include "string.h"
+#include <stdbool.h>
 
 void int_to_string(int n, char* str)
 {
@@ -9,8 +10,16 @@ void int_to_string(int n, char* str)
         return;
     }
 
+    int i = 0;
+    int j = 0;
     char* ptr = str;
-    int i, j = 0;
+    bool isNegative = false;
+
+    if(n < 0)
+    {
+        n *= -1;
+        isNegative = true;
+    }
 
     while (n > 0)
     {
@@ -19,13 +28,12 @@ void int_to_string(int n, char* str)
         n /= 10;
     }
 
-    *ptr = '\0';
-
-    if(n < 0)
+    if(isNegative == true)
     {
-        i = 1;
-        str[0] = '-';
+        *ptr++ = '-';
     }
+
+    *ptr = '\0';
 
     for(j = ptr - str - 1; i < j; i++, j--)
     {
