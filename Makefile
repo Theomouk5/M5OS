@@ -22,7 +22,7 @@ ISO   := $(BUILD)/iso
 
 # --- Sources -----------------------------------
 C_SOURCES   := $(shell find kernel drivers libc -name "*.c")
-ASM_SOURCES := $(shell find boot -name "*.asm")
+ASM_SOURCES := $(shell find boot kernel -name "*.asm")
 
 # --- Objets ------------------------------------
 C_OBJECTS   := $(patsubst %.c, $(OBJ)/%.o, $(C_SOURCES))
