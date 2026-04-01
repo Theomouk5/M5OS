@@ -2,7 +2,9 @@
 
 void kernel_main()
 {
-    int number = -26509;
-    vgaPutInt(number);
-    vgaPutChar('\n');
+    for(int i = 0; i <= 10000; i++)
+    {
+        vgaPutInt(i);
+        vgaPutChar('\n');
+    }
 }
